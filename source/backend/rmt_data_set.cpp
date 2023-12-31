@@ -1805,6 +1805,11 @@ static RmtErrorCode MergeResourceMemoryRegions(const RmtVirtualAllocation* virtu
         }
     }
 
+    if (bound_memory_regions.empty())
+    {
+        return kRmtOk;
+    }
+
     // Sort the bound memory regions by starting offsets.
     std::sort(
         bound_memory_regions.begin(), bound_memory_regions.end(), [](RegionOffsets& lhs, RegionOffsets& rhs) { return lhs.start_offset < rhs.start_offset; });
